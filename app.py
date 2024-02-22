@@ -51,6 +51,10 @@ def Authorisation_middlewear():
 def parse_json(data):
 	return json.loads(json_util.dumps(data))
 
+@app.route('/health/', methods=['GET'])
+def health():
+	return jsonify({"message" : "ok"}), 200
+
 # Route for seeing a data
 @app.route('/login',methods=['POST'])
 def login():
