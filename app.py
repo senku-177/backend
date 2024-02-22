@@ -33,19 +33,15 @@ CORS(app, origins='*')
 
 
 @api_bp.before_request
-def Authorisation_middlewear():
-	authorization_header = request.headers.get('Authorization')
-	print(authorization_header)
-	if authorization_header:
-		token=authorization_header.split(' ',1)
-		print("Token: ",token[1])
-		user=jwt.decode(token[1],key,algorithms=["HS256"])
-		print(user)
-		request.user=user
-
-
-
-
+def Authorisation_middleware():  # Corrected function name
+    authorization_header = request.headers.get('Authorization')
+    print(authorization_header)
+    if authorization_header:
+        token = authorization_header.split(' ', 1)
+        print("Token: ", token[1])
+        user = jwt.decode(token[1], key, algorithms=["HS256"])
+        print(user)
+        request.user = user
 
 
 def parse_json(data):
